@@ -1,0 +1,39 @@
+{
+  "name": "midpay-backend",
+  "version": "1.0.0",
+  "description": "MidPay Backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js -e .js,.hbs ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashkasera/MidPay.git"
+  },
+  "author": "Yash Kasera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashkasera/MidPay/issues"
+  },
+  "homepage": "https://github.com/yashkasera/MidPay#readme",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "express-device": "^0.4.2",
+    "firebase-admin": "^9.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "mongoose-float": "^1.0.4",
+    "multer": "^1.4.2",
+    "nanoid": "^3.1.23",
+    "razorpay": "^2.0.6"
+  }
+}
