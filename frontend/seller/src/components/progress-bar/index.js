@@ -4,10 +4,10 @@ import {Stack, Typography} from "@mui/material";
 
 const ProgressBar = (props) => {
     return (
-        <Stack direction={'row'} sx={{width: '100%'}} alignItems={'center'} justifyContent={'space-between'}>
-            <Typography variant="subtitle2" color="initial">{props.label}</Typography>
-            <LinearProgress variant="determinate" value={props.value} sx={{width: '80%', borderRadius: 5}}/>
-            <Typography variant="subtitle2" color="initial">{props.number}</Typography>
+        <Stack direction={'row'} alignItems={'center'} justifyContent={'space-evenly'}>
+            <Typography variant="subtitle2" color="textPrimary">{props.label}</Typography>
+            <LinearProgress variant="determinate" value={props.value} sx={{width: '80%', borderRadius: 5}} color={'secondary'}/>
+            <Typography variant="subtitle2" color="textPrimary">{props.number}</Typography>
         </Stack>
     )
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="85e7c069-fe1d-4b0c-9bd7-8e2703a6c129" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../../backend/.idea/.gitignore" afterDir="false" />
@@ -13,22 +16,31 @@
       <change afterPath="$PROJECT_DIR$/../../backend/src/middlewares/sellerAuth.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/middlewares/successHandler.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/models/chat.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/customer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/models/customerLog.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/issue.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/ledger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../backend/src/models/log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/models/message.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/order.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/payment.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/review.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/models/seller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/models/sellerLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/models/shipping.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/chat.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/crud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/dashboard.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/issue.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/order.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/payment.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/customer/review.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/public/seller.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/chat.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/crud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/dashboard.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/issue.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/log.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/routers/seller/order.js" afterDir="false" />
@@ -39,7 +51,37 @@
       <change afterPath="$PROJECT_DIR$/../../backend/src/util/firebase.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/util/razorpay.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../backend/src/util/successHandler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/components/drawer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/components/loading/LoadingComponent.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/components/loading/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/pages/auth/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/routes/PrivateRoutes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/routes/PrivateSection.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/routes/PublicRoutes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/util/firebaseConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/util/paths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/util/theme.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/customer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -50,7 +92,48 @@
       <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/error_img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/ic_not_found.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/circular-progress/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/datagrid/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawer/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/loading/LoadingComponent.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/loading/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/progress-bar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useAxios.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/auth/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/auth/sign_in.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/auth/sign_up.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/chat/ChatDrawer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/chat/ChatMessages.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/chat/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/instagramCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/issueCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/orderCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/ratingCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/recentIssueCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/dashboard/recentOrderCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/issue/IssueCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/issue/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/issue/new/DropzoneDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/issue/new/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/issue/new/recentOrderCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/order/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/payment/new/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/payment/new/razorpay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/search/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/settings/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/PrivateRoutes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/PrivateSection.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/PublicRoutes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/firebaseConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/paths.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
@@ -67,22 +150,38 @@
       <change afterPath="$PROJECT_DIR$/../seller/public/manifest.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/public/robots.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/assets/images/error_img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/assets/images/ic_not_found.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/components/appbar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/components/datagrid/index.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/components/drawer/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/components/loading/LoadingComponent.module.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/components/loading/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/components/progress-bar/index.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/firebase.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/hooks/useAxios.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/index.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/auth/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/auth/sign_in.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/auth/sign_up.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/chat/ChatDrawer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/chat/ChatHeader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/chat/ChatMessages.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/chat/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/dashboard/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/dashboard/monthlySales.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/dashboard/newIssues.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/dashboard/payments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/issues/IssueCard.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/issues/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/issues/view-issue/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/orders/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/orders/newOrder.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/payments/PaymentTableColumns.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/payments/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../seller/src/pages/payments/newPayment.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/profile/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/reviews/RatingCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../seller/src/pages/reviews/ReviewTableColumns.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/reviews/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/pages/settings/index.jsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../seller/src/routes/PrivateRoutes.jsx" afterDir="false" />
@@ -140,11 +239,40 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/theme.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/util/firebaseConfig.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/routes/PrivateRoutes.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/dashboard/index.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/routes/PrivateSection.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/routes/index.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/dashboard/ratingCard.jsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/routes/PublicRoutes.jsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1z6u9oVCwSqeM0gWYgIfLaGe90m" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -155,11 +283,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/pages/dashboard" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/pages/issue" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -186,7 +325,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633480711751</updated>
-      <workItem from="1633480714051" duration="2678000" />
+      <workItem from="1633480714051" duration="1687000" />
+      <workItem from="1633536825093" duration="5395000" />
+      <workItem from="1633705851859" duration="21727000" />
+      <workItem from="1633768519406" duration="40437000" />
+      <workItem from="1634305954360" duration="45796000" />
     </task>
     <servers />
   </component>
@@ -203,5 +346,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -13,7 +13,6 @@ function Routes() {
         window.scrollTo(0, 0);
     }, [pathname]);
     const auth = getAuth()
-    // let x = <PublicRoutes />
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
 
@@ -23,7 +22,7 @@ function Routes() {
     }
 
     useEffect(() => {
-        return auth.onAuthStateChanged(onAuthStateChanged); // unsubscribe on unmount
+        return auth.onAuthStateChanged(onAuthStateChanged);
     }, []);
 
     if (initializing) return null;
@@ -31,13 +30,6 @@ function Routes() {
         return <PublicRoutes/>
     }
     return <PrivateSection/>
-
-    // return <PublicRoutes />
-    // const isUserLoggedIn = getAuth().currentUser != null
-    // return (
-    // isUserLoggedIn ? <PrivateSection /> : <PublicRoutes />
-    // <PublicRoutes />
-    // );
 }
 
 export default Routes;

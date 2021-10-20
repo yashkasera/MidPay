@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,44 +6,45 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {Visibility, VisibilityOff} from "@mui/icons-material";
+import {IconButton, InputAdornment} from "@mui/material";
 
-export default function SignInSide({ classes, setExistingHandler }) {
+export default function SignInSide({classes, setExistingHandler}) {
     const [values, setValues] = useState({
         email: '',
-        password: ''
+        password: '',
     })
+    const [showPassword, setShowPassword] = useState(false)
     const valueChangeHandler = (props) => (event) => {
         setValues({
             ...values,
             [props]: event.target.value
         })
     }
+    const [disableSignIn, setDisableSignIn] = useState(false)
     const auth = getAuth();
-    const signInHandler = (event) => {
+    const signInHandler = async (event) => {
         event.preventDefault()
-        signInWithEmailAndPassword(auth, values.email, values.password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user)
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error(error)
-            });
+        setDisableSignIn(true)
+        try {
+            const user = await signInWithEmailAndPassword(auth, values.email, values.password)
+            console.log(user)
+        } catch (e) {
+            console.error(e)
+        } finally {
+            setDisableSignIn(false)
+        }
     }
     return (
         <div className={classes.paper}>
             <Typography variant="h3">
                 MidPay
             </Typography>
-            <Typography variant="h5" color="initial" style={{ marginTop: "2rem" }}>
+            <Typography variant="h5" color="initial" style={{marginTop: "2rem"}}>
                 Customer Login
             </Typography>
-            <div className={classes.divider} />
+            <div className={classes.divider}/>
             <form className={classes.form} noValidate>
                 <TextField
                     variant="outlined"
@@ -67,12 +68,23 @@ export default function SignInSide({ classes, setExistingHandler }) {
                     onChange={valueChangeHandler('password')}
                     name="password"
                     label="Password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     id="password"
                     autoComplete="current-password"
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={() => setShowPassword(!showPassword)}
+                                onMouseDown={(event) => event.preventDefault()}
+                            >
+                                {showPassword ? <VisibilityOff/> : <Visibility/>}
+                            </IconButton>
+                        </InputAdornment>
+                    }
                 />
                 <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
+                    control={<Checkbox value="remember" color="primary"/>}
                     label="Remember me"
                 />
                 <Button
@@ -82,6 +94,7 @@ export default function SignInSide({ classes, setExistingHandler }) {
                     color="primary"
                     className={classes.submit}
                     onClick={signInHandler}
+                    disabled={disableSignIn}
                 >
                     Sign In
                 </Button>

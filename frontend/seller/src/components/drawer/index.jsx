@@ -1,20 +1,29 @@
 import React from 'react'
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import {makeStyles, useTheme} from '@material-ui/core/styles'
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Hidden from '@material-ui/core/Hidden';
-import MailIcon from '@material-ui/icons/Mail';
-import {useLocation, useHistory} from 'react-router-dom';
+import Drawer from '@mui/material/Drawer';
+import makeStyles from '@mui/styles/makeStyles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Hidden from '@mui/material/Hidden';
+import {useHistory, useLocation} from 'react-router-dom';
 import Paths from '../../util/paths'
-import Typography from '@material-ui/core/Typography'
-import {Grid} from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
+import Typography from '@mui/material/Typography'
+import {Stack} from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 import {getAuth} from "firebase/auth";
+import {
+    AccountBoxRounded,
+    AssignmentRounded,
+    BugReportRounded,
+    ChatBubbleRounded,
+    DashboardRounded,
+    DonutSmallRounded,
+    LogoutRounded,
+    PaymentsRounded,
+    ReviewsRounded,
+    SettingsRounded
+} from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -28,102 +37,151 @@ const useStyles = makeStyles((theme) => ({
             width: drawerWidth,
             flexShrink: 0,
         },
+        // borderWidth: 0,
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
+        borderWidth: 0,
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     },
     avatar: {
         width: theme.spacing(10),
         height: theme.spacing(10),
+        backgroundColor: theme.palette.primary.main,
+        borderWidth: '2px',
+        borderColor: theme.palette.secondary.main,
+        borderStyle: 'solid',
+        color: 'floralwhite',
+        fontSize: '2rem',
     },
+    // listItem: {
+    // [theme.breakpoints.up('sm')]: {
+    //     "& .Mui-selected": {
+    // backgroundColor: theme.palette.background.paper,
+    // borderStyle: 'solid',
+    // borderLeftWidth: '5px',
+    // borderColor: theme.palette.secondary.main,
+    // },
+    // }
+    // }
 }));
 export default function NavigationDrawer(props) {
     const classes = useStyles();
     const {pathname} = useLocation();
     let history = useHistory();
     const routes1 = {
-        Dashboard: Paths.dashboard,
-        Payments: Paths.payments,
-        Reviews: Paths.reviews,
-        Issues: Paths.issues,
-        Logs: Paths.logs,
+        Dashboard: {
+            route: Paths.dashboard,
+            icon: <DashboardRounded/>
+        },
+        Orders: {
+            route: Paths.orders,
+            icon: <AssignmentRounded/>
+        },
+        Payments: {
+            route: Paths.payments,
+            icon: <PaymentsRounded/>
+        },
+        Chat: {
+            route: Paths.chat,
+            icon: <ChatBubbleRounded/>
+        },
+        Reviews: {
+            route: Paths.reviews,
+            icon: <ReviewsRounded/>
+        },
+        Issues: {
+            route: Paths.issues,
+            icon: <BugReportRounded/>
+        },
+        Logs: {
+            route: Paths.logs,
+            icon: <DonutSmallRounded/>
+        },
     };
     const routes2 = {
-        Profile: Paths.profile,
-        Account: Paths.account,
-        Settings: Paths.settings,
+        Profile: {
+            route: Paths.profile,
+            icon: <AccountBoxRounded/>
+        },
+        Settings: {
+            route: Paths.settings,
+            icon: <SettingsRounded/>
+        },
     };
 
     const handleLogout = () => {
         getAuth().signOut()
+        sessionStorage.clear()
     }
 
     const drawer = (
         <>
-            <Grid
+            <Stack
                 className={classes.header}
                 container
                 direction='column'
                 justifyContent="center"
                 alignItems="center">
-                <Avatar className={classes.avatar} alt="yash"
-                        src="https://firebasestorage.googleapis.com/v0/b/thrift-it-6292f.appspot.com/o/about%2FYash.jpeg?alt=media&token=51fd577a-e239-43d7-81dd-38709228ef5d"/>
-                <Typography variant="h6">User Name</Typography>
-            </Grid>
-            <Divider/>
-            <List>
-                {/* {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+                <Avatar
+                    className={classes.avatar}
+                    src={props.image}
+                >{props.name ? props.name.charAt(0).toUpperCase() : ''}</Avatar>
+                <Typography variant="h6">{props.name ? props.name : ''}</Typography>
+            </Stack>
+            <Stack
+                direction={'column'}
+                justifyContent={'space-between'}
+                spacing={2}
+                sx={{height: '100%', marginBottom: 4}}>
+                <List className={classes.listItem}>
+                    {Object.keys(routes1).map((routeName, index) => {
+                        const route = routes1[routeName].route;
+                        return (
+                            <ListItem
+                                selected={pathname.indexOf(route) !== -1}
+                                button
+                                key={route}
+                                onClick={() => history.push(route)}>
+                                <ListItemIcon sx={{paddingLeft: 2, paddingRight: 2}}>
+                                    {routes1[routeName].icon}
+                                </ListItemIcon>
+                                <ListItemText primary={routeName}/>
+                            </ListItem>
+                        );
+                    })}
+                </List>
+                {/*<Divider/>*/}
+                <List className={classes.listItem}>
+                    {Object.keys(routes2).map((routeName, index) => {
+                        const route = routes2[routeName].route;
+                        return (
+                            <ListItem
+                                selected={pathname.indexOf(route) !== -1}
+                                button
+                                key={route}
+                                onClick={() => history.push(route)}>
+                                <ListItemIcon sx={{paddingLeft: 2, paddingRight: 2}}>
+                                    {routes2[routeName].icon}
+                                </ListItemIcon>
+                                <ListItemText primary={routeName}/>
+                            </ListItem>
+                        );
+                    })}
+                    <ListItem className={classes.listItem}
+                              flex='end'
+                              button
+                              key={"logout"}
+                              onClick={handleLogout}>
+                        <ListItemIcon sx={{paddingLeft: 2, paddingRight: 2}}>
+                            <LogoutRounded/>
+                        </ListItemIcon>
+                        <ListItemText primary={'Logout'}/>
                     </ListItem>
-                ))} */}
-                {Object.keys(routes1).map((routeName, index) => {
-                    const route = routes1[routeName];
-                    return (
-                        <ListItem
-                            selected={route === pathname}
-                            button
-                            key={route}
-                            onClick={() => history.push(route)}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
-                            </ListItemIcon>
-                            <ListItemText primary={routeName}/>
-                        </ListItem>
-                    );
-                })}
-            </List>
-            <Divider/>
-            <List>
-                {Object.keys(routes2).map((routeName, index) => {
-                    const route = routes2[routeName];
-                    return (
-                        <ListItem
-                            selected={route === pathname}
-                            button
-                            key={route}
-                            onClick={() => history.push(route)}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
-                            </ListItemIcon>
-                            <ListItemText primary={routeName}/>
-                        </ListItem>
-                    );
-                })}
-            </List>
-            <Divider/>
-            <ListItem
-                flex='end'
-                button
-                key={"logout"}
-                onClick={() => handleLogout()}>
-                <ListItemIcon>
-                    <InboxIcon/>
-                </ListItemIcon>
-                <ListItemText primary={'Logout'}/>
-            </ListItem>
+                </List>
+                {/*<Divider/>*/}
+            </Stack>
         </>
     );
 
@@ -146,7 +204,7 @@ export default function NavigationDrawer(props) {
                     {drawer}
                 </Drawer>
             </Hidden>
-            <Hidden xsDown implementation="css">
+            <Hidden smDown implementation="css">
                 <Drawer
                     classes={{
                         paper: classes.drawerPaper,
@@ -157,5 +215,6 @@ export default function NavigationDrawer(props) {
                     {drawer}
                 </Drawer>
             </Hidden>
-        </nav>)
+        </nav>
+    );
 }

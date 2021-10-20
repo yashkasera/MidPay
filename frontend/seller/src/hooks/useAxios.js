@@ -3,22 +3,17 @@
  * Created 04/10/21 at 6:59 PM
  */
 import {useEffect, useState} from 'react';
-import axios from 'axios';
+import API from '../util/api';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-const authHeader = {
-    Authorization: "Bearer " + sessionStorage.getItem("idToken")
-}
-const useAxios = ({url, method, body = null, headers = authHeader}) => {
+const useAxios = (axiosParams) => {
     const [response, setResponse] = useState(null);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const fetchData = () => {
-        axios[method](url, headers, JSON.parse(body))
-            .then((res) => {
-                setResponse(res.data);
-            })
+    const fetchData = (params) => {
+        API.request(params).then((res) => {
+            setResponse(res.data);
+        })
             .catch((err) => {
                 setError(err);
             })
@@ -28,8 +23,8 @@ const useAxios = ({url, method, body = null, headers = authHeader}) => {
     };
 
     useEffect(() => {
-        fetchData();
-    }, [method, url, body, headers]);
+        fetchData(axiosParams);
+    }, []);
 
     return {response, error, loading};
 };

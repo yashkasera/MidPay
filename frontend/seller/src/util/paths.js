@@ -3,17 +3,15 @@ const paths = {
     dashboard: '/dashboard',
     payments: '/payments',
     orders: '/orders',
-    newOrder: '/orders/new',
     reviews: '/reviews',
     issues: '/issues',
+    viewIssue: '/issues/:id',
     profile: '/profile',
-    account: '/account',
     settings: '/settings',
-    logs: 'logs',
-
-
+    logs: '/logs',
+    chat: '/chat',
     // public
     auth: '/',
-}
+};
 
 export default paths

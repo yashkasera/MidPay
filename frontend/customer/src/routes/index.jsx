@@ -12,7 +12,6 @@ function Routes() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
-    const auth = getAuth()
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
 
@@ -22,7 +21,7 @@ function Routes() {
     }
 
     useEffect(() => {
-        return auth.onAuthStateChanged(onAuthStateChanged);
+        return getAuth().onAuthStateChanged(onAuthStateChanged);
     }, []);
 
     if (initializing) return null;

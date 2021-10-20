@@ -1,27 +1,137 @@
 import React from 'react'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Rating from '@mui/material/Rating';
+import {
+    Box,
+    Button,
+    Card,
+    CardHeader,
+    Divider,
+    IconButton,
+    ListItemIcon,
+    ListItemText,
+    Menu,
+    MenuItem,
+    Stack,
+    Typography
+} from "@mui/material";
+import {ChatBubbleOutlineRounded, EditRounded, Forward, MoreVertRounded} from "@mui/icons-material";
+import theme from "../../theme";
+import {styled} from "@mui/styles";
 
-import Box from '@mui/material/Box';
+const StyledRating = styled(Rating)({
+    '& .MuiRating-iconFilled': {
+        color: theme.palette.tertiary.main
+    },
+});
 
 export default function RatingCard(props) {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const ReviewItem = ({review}) => {
+        return (
+            <>
+                <Stack direction="row" alignItems="center" columnGap={2} justifyContent={'space-between'}>
+                    <Box sx={{minWidth: 200}}>
+                        <Typography variant="subtitle2" noWrap>
+                            Yash Kasera
+                        </Typography>
+                        <Typography variant="body2" sx={{color: 'text.secondary'}} noWrap>
+                            Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet
+                            Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet
+                        </Typography>
+                    </Box>
+                    <Box>
+                        <StyledRating defaultValue={3} size='small' precision={1} readOnly/>
+                    </Box>
+                    <IconButton onClick={handleClick}>
+                        <MoreVertRounded/>
+                    </IconButton>
+                </Stack>
+            </>
+        )
+    }
     return (
-        <Box width="100%" display="flex" p={1} alignItems="center" >
-            <Box p={1} flexGrow={1}>
-                <Typography variant="body2" color="initial">yash.kasera</Typography>
-                <Typography variant="subtitle2" color="textSecondary">a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 </Typography>
-            </Box>
-            <Box p={1}>
-                <Rating name="size-small" defaultValue={2.3} precision={0.1} size="small" readOnly />
-                <Typography variant="subtitle2" color="textSecondary">2314 likes</Typography>
-            </Box>
-            <Box p={1}>
-                <IconButton aria-label="options" onClick={() => console.log('clicked')} size="large">
-                    <MoreVertIcon />
-                </IconButton>
-            </Box>
-        </Box>
+        <>
+            <Card sx={{height: '100%', p: 0}} elevation={5}>
+                <Stack justifyContent={'space-between'} height={'100%'}>
+                    <Stack>
+                        <CardHeader title="My Reviews"/>
+                        <div style={{overflow: 'scroll'}}>
+                            <Stack spacing={3} sx={{px: 2}}>
+                                {[1, 2, 3, 4, 5, 6, 7].map((issue) => (
+                                    <ReviewItem key={issue}/>
+                                ))}
+                            </Stack>
+                        </div>
+                    </Stack>
+                    <Stack
+                        spacing={2}
+                        justifyContent={'space-evenly'}
+                        alignItems={'flex-end'}
+                        sx={{p: 2}}>
+                        <Divider sx={{width: '100%'}}/>
+                        <Button
+                            to="#"
+                            size="small"
+                            variant={'contained'}
+                            endIcon={<Forward/>}>
+                            View all
+                        </Button>
+                    </Stack>
+                </Stack>
+            </Card>
+            {/*<Stack*/}
+            {/*    direction={'row'}*/}
+            {/*    justifyContent={'space-between'}*/}
+            {/*    width={'100%'}>*/}
+            {/*    <Stack direction={'column'}>*/}
+            {/*        <Typography variant="body2" color="initial" noWrap>yash.kasera</Typography>*/}
+            {/*        <Typography variant="subtitle2" color="textSecondary" component="div">*/}
+            {/*            a1b2c3d4e5f6jbefnqjkjewqjkq kjjqnakjndfjkwndakjdfnafdjjanefjen mad jhasbd jahsd jhwbe dqhjwbdjqw*/}
+            {/*            djqh dehjq fakckajevnkaewjqnrkjqn rn e*/}
+            {/*        </Typography>*/}
+            {/*    </Stack>*/}
+            {/*    <StyledRating defaultValue={3} size='small' precision={1} readOnly/>*/}
+            {/*    <IconButton onClick={handleClick}>*/}
+            {/*        <MoreVertRounded/>*/}
+            {/*    </IconButton>*/}
+            {/*</Stack>*/}
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                elevation={5}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}>
+                <MenuItem onClick={handleClose}>
+                    <ListItemIcon>
+                        <EditRounded fontSize="small"/>
+                    </ListItemIcon>
+                    <ListItemText>Edit Review</ListItemText>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <ListItemIcon>
+                        <ChatBubbleOutlineRounded fontSize="small"/>
+                    </ListItemIcon>
+                    <ListItemText>Chat with Seller</ListItemText>
+                </MenuItem>
+            </Menu>
+        </>
     );
 }

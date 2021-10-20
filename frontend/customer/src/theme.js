@@ -1,10 +1,9 @@
 import { red } from '@mui/material/colors';
-import { createTheme, adaptV4Theme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 // A custom theme for this app
-const theme = createTheme(adaptV4Theme({
+const theme = createTheme({
     palette: {
-        mode: 'light',
         primary: {
             main: '#0084FF',
         },
@@ -15,13 +14,16 @@ const theme = createTheme(adaptV4Theme({
             main: "#4CAF50",
         },
         error: {
-            main: red.A400,
+            main: red['400'],
+            secondary:'#F66060'
         },
         background: {
             default: '#F7F8FA',
             paper: '#FFFFFF',
         },
+        textColorInverse:'#EEEEEE',
         backgroundSecondary: '#D2E8FD',
+        highlightColor: 'rgba(210,232,253,0.75)',
     },
     typography: {
         fontFamily: [
@@ -29,6 +31,6 @@ const theme = createTheme(adaptV4Theme({
             'sans-serif'
         ].join(','),
     },
-}));
+});
 
 export default theme;

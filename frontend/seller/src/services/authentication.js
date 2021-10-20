@@ -30,7 +30,6 @@ authentication.signUp = (fields) => {
 
     if (auth.currentUser) {
       reject(new Error("No current user"));
-
       return;
     }
 

@@ -1,30 +1,31 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import CssBaseline from '@mui/material/CssBaseline';
 
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
+import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import makeStyles from '@mui/styles/makeStyles';
+import Link from '@mui/material/Link';
 
-import {alpha} from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import {alpha} from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import Badge from '@mui/material/Badge';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MoreIcon from '@mui/icons-material/MoreVert';
 
 import {getAuth} from "firebase/auth";
 import PrivateRoutes from './PrivateRoutes'
 
 import NavigationDrawer from '../components/drawer'
+import useAxios from "../hooks/useAxios";
 
 const drawerWidth = 240;
 
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: drawerWidth,
         },
         backgroundColor: theme.palette.background.default,
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -54,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
     },
     grow: {
         flexGrow: 1,
@@ -95,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
@@ -120,6 +122,10 @@ function PrivateSection(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const {response,error,loading} = useAxios({
+        url:'/seller/dashboard',
+        method: 'GET'
+    })
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -174,16 +180,16 @@ function PrivateSection(props) {
             onClose={handleMobileMenuClose}
         >
             <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                <IconButton color="inherit" size="large">
+                    <Badge badgeContent={response && response.messages && response.messages.length} color="secondary">
                         <MailIcon/>
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
             </MenuItem>
             <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
+                <IconButton  color="inherit" size="large">
+                    <Badge badgeContent={response && response.notifications && response.notifications.length} color="secondary">
                         <NotificationsIcon/>
                     </Badge>
                 </IconButton>
@@ -195,7 +201,7 @@ function PrivateSection(props) {
                     aria-controls="primary-search-account-menu"
                     aria-haspopup="true"
                     color="inherit"
-                >
+                    size="large">
                     <AccountCircle/>
                 </IconButton>
                 <p>Profile</p>
@@ -214,7 +220,7 @@ function PrivateSection(props) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position="fixed" className={classes.appBar} elevation={0}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -222,11 +228,11 @@ function PrivateSection(props) {
                         color="inherit"
                         aria-label="open drawer"
                         onClick={handleDrawerToggle}
-                    >
+                        size="large">
                         <MenuIcon/>
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        MidPay
+                        MidPay - Modern Solution to Fair Trade
                     </Typography>
                     <div className={classes.grow}/>
                     <div className={classes.search}>
@@ -244,13 +250,13 @@ function PrivateSection(props) {
                     </div>
 
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
+                        <IconButton aria-label="show 4 new mails" color="inherit" size="large">
+                            <Badge badgeContent={response && response.messages && response.messages.length} color="secondary">
                                 <MailIcon/>
                             </Badge>
                         </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
+                        <IconButton aria-label="show 17 new notifications" color="inherit" size="large">
+                            <Badge badgeContent={response && response.notifications && response.notifications.length} color="secondary">
                                 <NotificationsIcon/>
                             </Badge>
                         </IconButton>
@@ -261,7 +267,7 @@ function PrivateSection(props) {
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
                             color="inherit"
-                        >
+                            size="large">
                             <AccountCircle/>
                         </IconButton>
                     </div>
@@ -271,7 +277,8 @@ function PrivateSection(props) {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="inherit">
+                            color="inherit"
+                            size="large">
                             <MoreIcon/>
                         </IconButton>
                     </div>
@@ -283,6 +290,8 @@ function PrivateSection(props) {
                 container={container}
                 mobileOpen={mobileOpen}
                 handleDrawerToggle={handleDrawerToggle}
+                image={response && response.image}
+                name={response && response.name}
             />
 
             <main className={classes.content}>

@@ -1,64 +1,74 @@
 import React from 'react'
-import Box from '@mui/material/Box'
-import makeStyles from '@mui/styles/makeStyles';
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import {Box, Button, ButtonGroup, Card, CardHeader, Chip, Divider, IconButton, Stack, Typography} from "@mui/material";
+import {BugReportRounded, DoneAllRounded, Forward} from "@mui/icons-material";
+import Chart from 'react-apexcharts';
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-    },
-}));
+const OrderItem = ({order}) => {
+    return (
+        <Stack direction="row" alignItems="center" columnGap={2} justifyContent={'space-between'}>
+            <Box sx={{minWidth: 200}}>
+                <Typography variant="subtitle2" noWrap>
+                    Yash Kasera
+                </Typography>
+                <Typography variant="body2" sx={{color: 'text.secondary'}} noWrap>
+                    Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet
+                    Lorem Ipsum dolor sit amet Lorem Ipsum dolor sit amet
+                </Typography>
+            </Box>
+            <Box>
+                <Typography variant="subtitle2" noWrap>
+                    Rs. 12349.00
+                </Typography>
+                <Typography variant="body2" sx={{color: 'text.secondary'}} noWrap>
+                    {new Date().toLocaleDateString()}
+                </Typography>
+            </Box>
+            {/*<CircularProgressWithLabel value={5} sx={{width: '100%'}}/>*/}
+            <div>
+                {/*<Chip label={'1 day left'} color={'error'}/>*/}
+                <Chip label={'7 days left'} color={'primary'} variant={'outlined'}/>
+            </div>
+            <ButtonGroup>
+                <IconButton>
+                    <BugReportRounded color={'error'}/>
+                </IconButton>
+                <IconButton>
+                    <DoneAllRounded color={'success'}/>
+                </IconButton>
+            </ButtonGroup>
+        </Stack>
+    )
+}
 
 export default function OrderCard(props) {
-    const classes = useStyles()
     return (
-        // <>
-        //     <Grid 
-        //     className={classes.root} 
-        //     container 
-        //     justifyContent="space-between" 
-        //     direction='row'
-        //     spacing={1}>
-        //         <Grid item xs>
-        //             <Typography variant="body2" color="initial">yash.kasera</Typography>
-        //             <Typography variant="subtitle2" color="textSecondary">a1b2c3d4</Typography>
-        //         </Grid>
-        //         <Grid item xs>
-        //             <Typography variant="body2" color="initial">Rs. 1509.99</Typography>
-        //             <Typography variant="subtitle2" color="textSecondary">31/08/2021</Typography>
-        //         </Grid>
-        //         <Grid item xs>
-
-        //         </Grid>
-        //         <Grid container xs justifyContent="flex-end" >
-        //             <IconButton aria-label="options" onClick={() => console.log('clicked')}>
-        //                 <MoreVertIcon />
-        //             </IconButton>
-        //         </Grid>
-        //     </Grid>
-        // </>
-        <Box width="100%" display="flex" p={1} alignItems="center" >
-            <Box p={1} flexGrow={1}>
-                <Typography variant="body2" color="initial">yash.kasera</Typography>
-                <Typography variant="subtitle2" color="textSecondary">a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 a1b2c3d4 </Typography>
-            </Box>
-            <Box p={1}>
-                <Typography variant="body2" color="initial">1,509.99</Typography>
-                <Typography variant="subtitle2" color="textSecondary">31/08/2021</Typography>
-            </Box>
-            <Box p={1}>
-                <Typography variant="body2" color="initial">1,509.99</Typography>
-                <Typography variant="subtitle2" color="textSecondary">31/08/2021</Typography>
-            </Box>
-            <Box p={1}>
-                <IconButton aria-label="options" onClick={() => console.log('clicked')} size="large">
-                    <MoreVertIcon />
-                </IconButton>
-            </Box>
-        </Box>
+        <Card sx={{height: '100%', p: 0}} elevation={5}>
+            <Stack justifyContent={'space-between'} height={'100%'}>
+                <Stack>
+                    <CardHeader title="My Orders"/>
+                    <div style={{overflow: 'scroll'}}>
+                        <Stack spacing={2} sx={{px: 2}}>
+                            {[1, 2, 3, 4, 5, 6, 7].map((issue) => (
+                                <OrderItem key={issue}/>
+                            ))}
+                        </Stack>
+                    </div>
+                </Stack>
+                <Stack
+                    spacing={2}
+                    justifyContent={'space-evenly'}
+                    alignItems={'flex-end'}
+                    sx={{p: 2}}>
+                    <Divider sx={{width: '100%'}}/>
+                    <Button
+                        to="#"
+                        size="small"
+                        variant={'contained'}
+                        endIcon={<Forward/>}>
+                        View all
+                    </Button>
+                </Stack>
+            </Stack>
+        </Card>
     );
 }

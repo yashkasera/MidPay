@@ -1,1 +1,0 @@
-# MidPay Seller Portal

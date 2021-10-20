@@ -2,7 +2,7 @@
   "hosting": [
     {
       "site": "seller-mid-pay",
-        "public": "sites/seller/build",
+        "public": "seller/build",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -16,7 +16,7 @@
       ]
     },{
       "site": "customer-mid-pay",
-      "public": "sites/customer/build",
+      "public": "customer/build",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -30,7 +30,7 @@
       ]
     },{
       "site": "mid-pay",
-      "public": "sites/public/",
+      "public": "public/",
       "ignore": [
         "firebase.json",
         "**/.*",
